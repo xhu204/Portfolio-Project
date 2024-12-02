@@ -1,59 +1,40 @@
 import components.map.Map;
-import components.map.Map1L;
-import components.queue.Queue;
 
-public class ScoreTracker {
-    private Map<String, Integer> playerScores;
-
-    // Constructor
-    //xxxx
-    public ScoreTracker() {
-        Map<String, Integer> playerScores = new Map1L<>();
-    }
-
-    //Kernel Methods
-    public void addScore(String playerID, int score) {
-        assert playerID != null;
-        assert score < 0;
-
-        this.playerScores.add(playerID, score);
-
-    }
-
-    public int getScore(String playerID) {
-
-    }
-
-    public void updateScore(String playerID, int newScore) {
-
-    }
-
-    public boolean isPlayer(String playerID) {
-
-    }
-
-    public void clear() {
-        this.playerScores.clear();
-    }
-
-    //Secondary Methods
-    public int getHighestScore() {
-
-    }
-
-    public String getTopPlayer() {
-
-    }
-
-    public Queue<Map<String, Integer>> getRankings() {
-
-    }
-
-    // Standard Interface Methods
-    //transferFrom
-
-    /*
+public interface ScoreTracker extends ScoreTrackerKernel {
+    /**
+     * Returns the highest score among all players.
      *
+     * @return the highest score
+     * @requires getTotalPlayers() > 0
+     * @ensures [returns the maximum score among all players in this]
      */
+    int getHighestScore();
+
+    /**
+     * Retrieves the playerID of the player with the highest score.
+     *
+     * @return the playerID of the top player
+     * @requires getTotalPlayers() > 0
+     * @ensures [returns the playerID associated with the highest score in this]
+     */
+    String getTopPlayer();
+
+    /**
+     * Provides a ranking of players sorted by their scores in descending order.
+     *
+     * @return a map of playerIDs and their scores, sorted from highest to
+     *         lowest score
+     * @ensures [returns a map where entries are sorted by score in descending
+     *          order]
+     */
+    Map<String, Integer> getRankings();
+
+    /**
+     * Returns the total number of players being tracked.
+     *
+     * @return the total number of players
+     * @ensures [returns the number of playerIDs in this]
+     */
+    int getTotalPlayers();
 
 }
