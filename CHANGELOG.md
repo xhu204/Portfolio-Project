@@ -106,3 +106,21 @@ the following form: 2024.12.02
 ### Updated
 
 - Changed design to include kernel and enhanced interfaces for ScoreTracker
+
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Calendar Versioning](https://calver.org/) of
+the following form: 2024/12/03
+
+## 2024/12/03
+
+### Added
+
+- Designed abstract class for ScoreTracker component
+
+### Updated
+
+- Changed design to include abstract class

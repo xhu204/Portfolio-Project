@@ -37,4 +37,16 @@ public interface ScoreTracker extends ScoreTrackerKernel {
      */
     int getTotalPlayers();
 
+    /**
+     * Removes a player from the score tracker.
+     *
+     * @param playerID
+     *            the unique identifier of the player to remove
+     * @requires isPlayer(playerID)
+     * @updates this
+     * @ensures [playerID is no longer in this]
+     */
+    @Override
+    void removePlayer(String playerID);
+
 }
