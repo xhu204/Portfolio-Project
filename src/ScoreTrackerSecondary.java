@@ -10,10 +10,10 @@ public abstract class ScoreTrackerSecondary implements ScoreTracker {
      */
     @Override
     public int getHighestScore() {
-        assert (playerScores.size() > 0);
+        assert (this.getTotalPlayers() > 0);
 
         int highestScore = Integer.MIN_VALUE;
-        for (Map.Pair<String, Integer> pair : playerScores) {
+        for (Map.Pair<String, Integer> pair : this) {
             int score = pair.value();
             if (score > highestScore) {
                 highestScore = score;
@@ -31,11 +31,11 @@ public abstract class ScoreTrackerSecondary implements ScoreTracker {
      */
     @Override
     public String getTopPlayer() {
-        assert (playerScores.size() > 0);
+        assert (this.getTotalPlayers() > 0);
 
         String topPlayer = null;
         int highestScore = Integer.MIN_VALUE;
-        for (Map.Pair<String, Integer> pair : playerScores) {
+        for (Map.Pair<String, Integer> pair : this) {
             int score = pair.value();
             if (score > highestScore) {
                 highestScore = score;
@@ -53,7 +53,7 @@ public abstract class ScoreTrackerSecondary implements ScoreTracker {
      */
     @Override
     public int getTotalPlayers() {
-        return playerScores.size();
+        return this.size();
     }
 
     /**
@@ -67,8 +67,9 @@ public abstract class ScoreTrackerSecondary implements ScoreTracker {
      */
     @Override
     public void removePlayer(String playerID) {
-        assert playerScores.hasKey(playerID)
-        playerScores.remove(playerID);
+        assert this.hasKey(playerID);
+
+        this.remove(playerID);
     }
 
     @Override
@@ -83,7 +84,7 @@ public abstract class ScoreTrackerSecondary implements ScoreTracker {
     @Override
     public String toString() {
         String out = "ScoreTracker:\n";
-        for (Map.Pair<String, Integer> pair : playerScores) {
+        for (Map.Pair<String, Integer> pair : this) {
             out = out + "PlayerID: " + pair.key() + ", Score: " + pair.value()
                     + "\n";
         }

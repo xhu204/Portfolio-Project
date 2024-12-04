@@ -1,4 +1,7 @@
-public interface ScoreTrackerKernel extends ScoreTrackermain {
+import components.standard.Standard;
+
+public interface ScoreTrackerKernel extends Standard<ScoreTracker> {
+
     /**
      * Adds a new player in to the game with their score.
      *

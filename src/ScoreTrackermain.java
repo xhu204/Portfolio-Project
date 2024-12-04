@@ -3,7 +3,6 @@ import components.map.Map1L;
 import components.queue.Queue;
 
 public class ScoreTrackermain {
-    private Map<String, Integer> playerScores;
 
     // Constructor
     //xxxx
