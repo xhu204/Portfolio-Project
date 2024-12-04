@@ -1,6 +1,5 @@
-import components.map.Map;
-
 public interface ScoreTracker extends ScoreTrackerKernel {
+
     /**
      * Returns the highest score among all players.
      *
@@ -18,16 +17,6 @@ public interface ScoreTracker extends ScoreTrackerKernel {
      * @ensures [returns the playerID associated with the highest score in this]
      */
     String getTopPlayer();
-
-    /**
-     * Provides a ranking of players sorted by their scores in descending order.
-     *
-     * @return a map of playerIDs and their scores, sorted from highest to
-     *         lowest score
-     * @ensures [returns a map where entries are sorted by score in descending
-     *          order]
-     */
-    Map<String, Integer> getRankings();
 
     /**
      * Returns the total number of players being tracked.
@@ -48,5 +37,27 @@ public interface ScoreTracker extends ScoreTrackerKernel {
      */
     @Override
     void removePlayer(String playerID);
+
+    /**
+     * Returns a string representation of the score tracker.
+     *
+     * @return a string representation of this score tracker
+     * @ensures [returns a string that represents the current state of this
+     *          score tracker]
+     */
+    @Override
+    String toString();
+
+    /**
+     * Compares the specified object with this score tracker for equality.
+     *
+     * @param obj
+     *            the object to be compared for equality with this score tracker
+     * @return true if the specified object is equal to this score tracker
+     * @ensures [returns true if obj is a ScoreTracker and has the same players
+     *          and scores as this]
+     */
+    @Override
+    boolean equals(Object obj);
 
 }
