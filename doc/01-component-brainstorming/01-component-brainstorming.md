@@ -1,12 +1,10 @@
 # Portfolio Part 1: Component Brainstorming
 
-- **Name**: <!-- TODO: fill with first and last name (e.g., Brutus Buckeye) then delete this comment -->
-- **Dot Number**: <!-- TODO: fill with OSU dot number (e.g., buckeye.17) then delete this comment -->
-- **Due Date**: <!-- TODO: fill with due date and time (e.g., 10/17 @ 3:10 PM EST) then delete this comment -->
+- **Name**: Xin Hu
+- **Dot Number**: Hu.2782
+- **Due Date**: 2024/12/1
 
 ## Assignment Overview
-
-<!-- TODO: read the assignment overview then delete this comment -->
 
 The overall goal of the portfolio project is to have you design and implement
 your own OSU component. There are no limits to what you choose to design and
@@ -29,8 +27,6 @@ implement.
 
 ## Assignment Checklist
 
-<!-- TODO: browse the checklist then delete this comment -->
-
 To be sure you have completed everything on this assignment, we have littered
 this document with TODO comments. You can browse all of them in VSCode by
 opening the TODOs window from the sidebar. The icon looks like a tree and will
@@ -52,8 +48,6 @@ to the tree diagram (you may remove this one as well):
 
 ## Assignment Learning Objectives
 
-<!-- TODO: read the assignment learning objectives then delete this comment -->
-
 Without learning objectives, there really is no clear reason why a particular
 assessment or activity exists. Therefore, to be completely transparent, here is
 what we're hoping you will learn through this particular aspect of the portfolio
@@ -66,8 +60,6 @@ project. Specifically, students should be able to:
    discipline
 
 ## Assignment Rubric: 10 Points
-
-<!-- TODO: read the assignment rubric then delete this comment -->
 
 Again, to be completely transparent, most of the portfolio project, except the
 final submission, is designed as a formative assessment. Formative assessments
@@ -98,23 +90,15 @@ do good work.
 > brainstorming. Plus it helps us get to know you better! Feel free to share
 > images in this section.
 
-<!-- TODO: briefly talk about your interests then delete this comment.
-Also, protip: you can preview what your response looks like by hitting
-the magnifying glass icon in the upper-right corner or pressing CTRL+K and
-then V. This kind of button combination is called a chord, for whatever
-reason -->
+The world today is full of data, and I am interested in collecting and tracking this data.
 
 ## Assignment
-
-<!-- TODO: read the assignment section then delete this comment -->
 
 As previously stated, you are tasked with brainstorming 3 possible components.
 To aid you in this process, we have provided [some example components][example-components]
 that may help you in your brainstorming. All of these components were made at
 some point by one of your peers, so you should feel confident that you can
 accomplish any of them.
-
-<!-- TODO: browse the list of possible projects then delete this comment -->
 
 There is no requirement that you use any of the components listed above.
 If you want to model something else, go for it! Very common early object
@@ -123,8 +107,6 @@ etc. Make of this whatever seems interesting to you, and keep in mind that
 you're just brainstorming right now. You do not have to commit to anything.
 
 ### Example Component
-
-<!-- TODO: review this example component then delete this comment -->
 
 To help you brainstorm a few components, we've provided an example below of a
 component you already know well: NaturalNumber. We highly recommend that you
@@ -157,10 +139,10 @@ format, we can be more confident that your designs will be possible.
         mutate `this`.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-        - No. All methods work with integers or other NaturalNumbers.
+      - No. All methods work with integers or other NaturalNumbers.
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-        - Yes. NaturalNumber is base 10, and we track that in a constant called
+      - Yes. NaturalNumber is base 10, and we track that in a constant called
           `RADIX`.
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
@@ -192,70 +174,120 @@ will likely refine your design to make your implementation easier to use.
 
 > Please use this section to share your designs.
 
-- Component Design #1: <!-- TODO: give component a name then delete this comment -->
+- Component Design #1: BudgetTracker
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - The Budget Tracker component is designed to manage and monitor financial transactions, including income and expenses. It allows users to add transactions and categorize transactions. This component can be used for personal finance to help users track their budget
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - void addTransaction(String category, double amount, int date)
+    Adds a new transaction to the budget tracker
+    - double getBalance()
+    Calculates and returns the current balance by summing all transaction amounts
+    -void clear()
+    Clears all transactions
+    -boolean isEmpty()
+    Checks if there are any transactions recorded in the budget tracker
+
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - double getTotalIncome()
+    Returns the sum of all income transactions
+    -double getTotalExpenses()
+    Returns the sum of all expense transactions
+    -void removeTransaction(Transaction transaction)
+    Removes a specific transaction from the budget tracker
+
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - yes, it can adding and removing transactions
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - IDK
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - IDK
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - yes, like getTotalIncome() could use addTransaction
 
-
-- Component Design #2: <!-- TODO: give component a name then delete this comment -->
+- Component Design #2: ScoreTracker
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - The ScoreTracker component is designed to record and manage user scores. It allows adding, updating, and retrieving scores, as well as calculating statistics such as the highest score ranking. This component can be used in games, quizzes, or any environment where tracking scores is required
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - void addScore(String playerID, int score)
+    Adds a new score for a player. If the player doesn't exist, they are added to the tracker
+    -int getScore(String playerID)
+    Retrieves the current score of the specified player
+    -void updateScore(String playerID, int newScore)
+    Updates the score of an existing player.
+    -boolean isPlayer(String playerID)
+    Checks if a player exists in the score tracker
+    -oid clear()
+    Clears all scores and resets the tracker
+
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - int getHighestScore()
+    Returns the highest score among all players
+    - String getTopPlayer()
+    Retrieves the playerID of the player with the highest score.
+    -void removePlayer(String playerID)
+    Removes a player from the score tracker
+    -int getTotalPlayers()
+    Returns the total number of players being tracked
+
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, ScoreTracker is mutable as it allows adding, updating and removing players and their scores
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, for additional player information, I'm planing to use Map
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - IDK
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes. For example, getHighestScore() can be implemented by using isPlayer(String playerID) and iterating over all player IDs, getScore(String playerID) to compare and find the highest score
 
-
-- Component Design #3: <!-- TODO: give component a name then delete this comment -->
+- Component Design #3: Die
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - The Die component represents a die with a specified number of sides and an optional probability distribution for each side. It allows the user to roll the die to obtain results according to the defined probabilities. This component supports standard fair dice and cheat dice
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - void setSides(int numberOfSides)
+    Sets the number of sides of the die
+    -int getSides()
+    Returns the number of sides the die
+    -void setProbabilityDistribution(queue probabilities)
+    Sets a custom probability distribution for the die. The probabilities array should have a length equal to the number of sides, and the sum of the probabilities should be 1.0
+    -queue getProbabilityDistribution()
+    Returns the current probability distribution
+    -int roll()
+    Simulates rolling the die and returns the result
+    -void clear()
+    Resets the die
+
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - void setToFairDie()
+    Configures the die to be fair, ensuring each side has an equal probability
+    -boolean isFair()
+    Checks if the die is fair
+    -double getSideProbability(int side)
+    Returns the probability of a specific side
+    -Die copy()
+    Creates a copy of die
+
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, the Die component is mutable because it allows changing the number of sides, setting  probability distributions
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, might use map to stor each side to its probability
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - IDK
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, isFair() could use getProbabilityDistribution()
 
 ## Post-Assignment
 
@@ -263,8 +295,6 @@ The following sections detail everything that you should do once you've
 completed the assignment.
 
 ### Changelog
-
-<!-- TODO: create CHANGELOG then delete this comment -->
 
 At the end of every assignment, you should update the
 [CHANGELOG.md](../../CHANGELOG.md) file found in the root of the project folder.
@@ -280,15 +310,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Calendar Versioning](https://calver.org/) of
-the following form: YYYY.0M.0D.
+the following form: 2024/12/1
 
 ## YYYY.MM.DD
 
 ### Added
 
-- Designed a <!-- insert name of component 1 here --> component
-- Designed a <!-- insert name of component 2 here --> component
-- Designed a <!-- insert name of component 3 here --> component
+- Designed a BudgetTracker component
+- Designed a ScoreTracker component
+- Designed a Die component
 ```
 
 Here `YYYY.MM.DD` would be the date of your submission, such as 2024.04.21.
@@ -303,8 +333,6 @@ of development.
 
 ### Submission
 
-<!-- TODO: read the submission instructions then delete this comment -->
-
 If you have completed the assignment using this template, we recommend that
 you convert it to a PDF before submission. If you're not sure how, check out
 this [Markdown to PDF guide][markdown-to-pdf-guide]. However, PDFs should be
@@ -313,11 +341,7 @@ all your work is there before submitting. For future assignments, you will
 just be submitting a link to a pull request. This will be the only time
 you have to submit any PDFs.
 
-<!-- TODO: upload a PDF of this document and the CHANGELOG to Carmen then delete this comment -->
-
 ### Peer Review
-
-<!-- TODO: review the peer review guidelines then delete this comment -->
 
 Following the completion of this assignment, you will be assigned three
 students' component brainstorming assignments for review. Your job during the
@@ -343,8 +367,6 @@ PDF to read this rubric as a table).
 If you'd like to give feedback for this assignment (or any assignment, really),
 make use of [this survey][survey]. Your feedback helps make assignments
 better for future students.
-
-<!-- TODO: follow the link to share your feedback then delete this comment -->
 
 [example-components]: https://therenegadecoder.com/code/the-never-ending-list-of-small-programming-project-ideas/
 [markdown-to-pdf-guide]: https://therenegadecoder.com/blog/how-to-convert-markdown-to-a-pdf-3-quick-solutions/

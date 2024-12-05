@@ -70,3 +70,94 @@ the following form: YYYY.0M.0D.
 [unreleased]: https://github.com/jrg94/portfolio-project/compare/v2024.08.07...HEAD
 [2024.08.07]: https://github.com/jrg94/portfolio-project/compare/v2024.01.07...v2024.08.07
 [2024.01.07]: https://github.com/jrg94/portfolio-project/releases/tag/v2024.01.07
+
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Calendar Versioning](https://calver.org/) of
+the following form: 2024.12.02
+
+## 2024.12.02
+
+### Added
+
+- Designed a proof of concept for ScoreTracker component
+
+### Updated
+
+- Changed design to include base framwork for ScoreTracker component
+
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Calendar Versioning](https://calver.org/) of
+the following form: 2024.12.02
+
+## 2024.12.02
+
+### Added
+
+- Designed kernel and enhanced interfaces for ScoreTracker component
+
+### Updated
+
+- Changed design to include kernel and enhanced interfaces for ScoreTracker
+
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Calendar Versioning](https://calver.org/) of
+the following form: 2024/12/03
+
+## 2024/12/03
+
+### Added
+
+- Designed abstract class for ScoreTracker component
+
+### Updated
+
+- Changed design to include abstract class
+
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Calendar Versioning](https://calver.org/) of
+the following form:  2024/12/03
+
+## 2024/12/03
+
+### Added
+
+- Designed kernel implementation for  ScoreTracker component
+
+### Updated
+
+- Changed design to include kernel implementation for ScoreTracker component, also fix lots things on kernel interface file, enhanced interface file, abstract class file.
+
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Calendar Versioning](https://calver.org/) of
+the following form: YYYY.0M.0D.
+
+## 2024/12/04
+
+### Added
+
+- Designed test suite for ScoreTracker component
+- Designed two different use cases for ScoreTracker component
+
+### Updated
+
+- Changed design to include test and two different use cases for ScoreTracker, also fix lots of bugs in ScoreTracker component.
