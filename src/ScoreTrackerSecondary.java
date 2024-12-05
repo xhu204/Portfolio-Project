@@ -1,93 +1,178 @@
 import components.map.Map;
 
+/**
+ * Abstract class providing implementations for secondary methods of
+ * {@code ScoreTracker}.
+ *
+ * <p>
+ * The {@code ScoreTrackerSecondary} class implements the {@code ScoreTracker}
+ * interface and provides concrete implementations for all secondary methods
+ * declared in {@code ScoreTracker}. These implementations rely solely on the
+ * kernel methods specified in {@code ScoreTrackerKernel}, adhering to the
+ * principles of layered design in component-based software engineering. This
+ * approach promotes modularity and maintainability by separating the core
+ * functionality (kernel methods) from the extended features (secondary
+ * methods).
+ * </p>
+ *
+ * <p>
+ * This class is abstract and cannot be instantiated directly. It is intended to
+ * be extended by a concrete class that implements the kernel methods, such as
+ * {@code ScoreTracker1}. Clients should use the concrete subclasses to create
+ * instances of {@code ScoreTracker}.
+ * </p>
+ *
+ * @author Xin Hu
+ * @version 1.0
+ */
 public abstract class ScoreTrackerSecondary implements ScoreTracker {
-    /**
-     * Returns the highest score among all players.
-     *
-     * @return the highest score
-     * @requires getTotalPlayers() > 0
-     * @ensures [returns the maximum score among all players in this]
-     */
+
     @Override
     public int getHighestScore() {
-        assert (this.getTotalPlayers() > 0);
+        assert this.getTotalPlayers() > 0;
 
         int highestScore = Integer.MIN_VALUE;
-        for (Map.Pair<String, Integer> pair : this) {
-            int score = pair.value();
+        int originalSize = this.size();
+
+        // Temporary storage to restore the tracker
+        ScoreTracker tempTracker = this.newInstance();
+
+        for (int i = 0; i < originalSize; i++) {
+            // Remove
+            Map.Pair<String, Integer> entry = this.removeAny();
+            int score = entry.value();
+
+            // Update
             if (score > highestScore) {
                 highestScore = score;
             }
+
+            tempTracker.addScore(entry.key(), score);
         }
+
+        // Restore
+        this.transferFrom(tempTracker);
+
         return highestScore;
     }
 
-    /**
-     * Retrieves the playerID of the player with the highest score.
-     *
-     * @return the playerID of the top player
-     * @requires getTotalPlayers() > 0
-     * @ensures [returns the playerID associated with the highest score in this]
-     */
     @Override
     public String getTopPlayer() {
         assert (this.getTotalPlayers() > 0);
 
         String topPlayer = null;
         int highestScore = Integer.MIN_VALUE;
-        for (Map.Pair<String, Integer> pair : this) {
-            int score = pair.value();
+        int originalSize = this.size();
+
+        ScoreTracker tempTracker = this.newInstance();
+        tempTracker.transferFrom(this);
+
+        for (int i = 0; i < originalSize; i++) {
+            // Remove any player from tempTracker
+            Map.Pair<String, Integer> entry = tempTracker.removeAny();
+            String playerID = entry.key();
+            int score = entry.value();
+
+            // Update highest score and top player
             if (score > highestScore) {
                 highestScore = score;
-                topPlayer = pair.key();
+                topPlayer = playerID;
             }
+
+            // restore
+            this.addScore(playerID, score);
         }
+
         return topPlayer;
     }
 
-    /**
-     * Returns the total number of players being tracked.
-     *
-     * @return the total number of players
-     * @ensures [returns the number of playerIDs in this]
-     */
     @Override
     public int getTotalPlayers() {
         return this.size();
     }
 
-    /**
-     * Removes a player from the score tracker.
-     *
-     * @param playerID
-     *            the unique identifier of the player to remove
-     * @requires isPlayer(playerID)
-     * @updates this
-     * @ensures [playerID is no longer in this]
-     */
     @Override
     public void removePlayer(String playerID) {
-        assert this.hasKey(playerID);
+        assert this.isPlayer(playerID);
 
-        this.remove(playerID);
+        int originalSize = this.size();
+        ScoreTracker tempTracker = this.newInstance();
+
+        for (int i = 0; i < originalSize; i++) {
+            Map.Pair<String, Integer> entry = this.removeAny();
+            String currentPlayerID = entry.key();
+            int score = entry.value();
+
+            if (!currentPlayerID.equals(playerID)) {
+                tempTracker.addScore(currentPlayerID, score);
+            }
+        }
+
+        // Restore the tracker without the removed player
+        this.transferFrom(tempTracker);
     }
 
     @Override
     public boolean equals(Object obj) {
-        boolean result = false;
-        if (this.equals(obj)) {
-            result = true;
+        if (obj == null || !(obj instanceof ScoreTracker)) {
+            return false;
         }
-        return result;
+
+        ScoreTracker other = (ScoreTracker) obj;
+
+        if (this.size() != other.size()) {
+            return false;
+        }
+
+        boolean isEqual = true;
+        ScoreTracker tempTracker1 = this.newInstance();
+        ScoreTracker tempTracker2 = other.newInstance();
+
+        int originalSize = this.size();
+
+        for (int i = 0; i < originalSize; i++) {
+            Map.Pair<String, Integer> entry = this.removeAny();
+            String playerID = entry.key();
+            int score = entry.value();
+
+            if (!other.isPlayer(playerID)
+                    || other.getScore(playerID) != score) {
+                isEqual = false;
+            }
+
+            tempTracker1.addScore(playerID, score);
+            tempTracker2.addScore(playerID, score);
+        }
+
+        // Restore both trackers
+        this.transferFrom(tempTracker1);
+        other.transferFrom(tempTracker2);
+
+        return isEqual;
     }
 
     @Override
     public String toString() {
+        ScoreTracker tempTracker = this.newInstance();
+        int originalSize = this.size();
+        int count = 0;
+        Map.Pair<String, Integer> entry = null;
+        String playerID = null;
+        int score = 0;
         String out = "ScoreTracker:\n";
-        for (Map.Pair<String, Integer> pair : this) {
-            out = out + "PlayerID: " + pair.key() + ", Score: " + pair.value()
-                    + "\n";
+        for (int i = 0; i < originalSize; i++) {
+            entry = this.removeAny();
+            playerID = entry.key();
+            score = entry.value();
+            out = out + "PlayerID: " + playerID + ", Score: " + score + "\n";
+            count++;
+            if (count < originalSize) {
+                out += ", ";
+            }
+            tempTracker.addScore(playerID, score);
         }
+        //restore
+        this.transferFrom(tempTracker);
         return out;
     }
 

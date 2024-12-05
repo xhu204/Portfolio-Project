@@ -1,5 +1,28 @@
-import components.standard.Standard;
+import components.map.Map;
+import components.standard.Standard;;
 
+/**
+ * Kernel interface for the {@code ScoreTracker} component.
+ *
+ * <p>
+ * The {@code ScoreTrackerKernel} interface extends
+ * {@code Standard<ScoreTracker>} and defines the core methods (kernel methods)
+ * for managing player scores in a game or application. These methods provide
+ * the fundamental operations for adding, updating, retrieving, and removing
+ * player scores. This interface serves as the foundation upon which the
+ * secondary methods are implemented in the {@code ScoreTracker} component.
+ * </p>
+ *
+ * <p>
+ * Implementations of this interface should ensure that all method contracts are
+ * strictly followed, including the specified preconditions and postconditions.
+ * The kernel methods are designed to manipulate the internal state of the
+ * {@code ScoreTracker} in a controlled and predictable manner.
+ * </p>
+ *
+ * @author Xin Hu
+ * @version 1.0
+ */
 public interface ScoreTrackerKernel extends Standard<ScoreTracker> {
 
     /**
@@ -60,5 +83,49 @@ public interface ScoreTrackerKernel extends Standard<ScoreTracker> {
      * @ensures [returns true if playerID is in this, false otherwise]
      */
     boolean isPlayer(String playerID);
+
+    /**
+     * Returns a new instance of ScoreTracker with the same dynamic type as
+     * this.
+     *
+     * @return a new instance of ScoreTracker
+     * @ensures newInstance is an initial instance of ScoreTracker
+     */
+    @Override
+    ScoreTracker newInstance();
+
+    /**
+     * Sets this to the incoming value of source, and resets source to an
+     * initial value.
+     *
+     * @param source
+     *            the ScoreTracker to transfer from
+     * @updates this
+     * @clears source
+     * @requires source is not null and source has the same dynamic type as this
+     * @ensures this = #source and source = initial value
+     */
+    @Override
+    void transferFrom(ScoreTracker source);
+
+    @Override
+    void clear();
+
+    /**
+     * Returns the number of players being tracked.
+     *
+     * @return the number of players
+     * @ensures size = |DOMAIN(this)|
+     */
+    int size();
+
+    /**
+     * Removes and returns an arbitrary player-score pair from the tracker.
+     *
+     * @return a Map.Pair containing a playerID and their score
+     * @requires this /= {}
+     * @ensures this = #this \ {(playerID, score)}
+     */
+    Map.Pair<String, Integer> removeAny();
 
 }
